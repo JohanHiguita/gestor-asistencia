@@ -10,7 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_19_221857) do
+ActiveRecord::Schema.define(version: 2019_01_19_224900) do
+
+  create_table "schools", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_schools_on_user_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.integer "number"
+    t.date "date"
+    t.time "time"
+    t.integer "user_id"
+    t.integer "school_id"
+    t.integer "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_sessions_on_school_id"
+    t.index ["student_id"], name: "index_sessions_on_student_id"
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "first_name"
+    t.string "middle_name"
+    t.string "last_name_1"
+    t.string "last_name_2"
+    t.string "cc"
+    t.integer "grade"
+    t.integer "age"
+    t.string "gender"
+    t.integer "user_id"
+    t.integer "school_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_students_on_school_id"
+    t.index ["user_id"], name: "index_students_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,6 +60,11 @@ ActiveRecord::Schema.define(version: 2019_01_19_221857) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "middle_name"
+    t.string "last_name_1"
+    t.string "last_name_2"
+    t.string "cc"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

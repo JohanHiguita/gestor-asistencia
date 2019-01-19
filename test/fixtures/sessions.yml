@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 
+  date: 2019-01-19
+  time: 2019-01-19 17:49:00
+  user: one
+  school: one
+  student: one
+
+two:
+  number: 
+  date: 2019-01-19
+  time: 2019-01-19 17:49:00
+  user: two
+  school: two
+  student: two
