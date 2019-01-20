@@ -16,4 +16,12 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+
+//= require sbadmin/jquery.easing.min
+//= require sbadmin/jquery.dataTables
+//= require sbadmin/dataTables.bootstrap4
+//= require sbadmin/sb-admin.min
+//= require sbadmin/datatables-demo
+
+
+
