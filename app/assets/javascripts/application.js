@@ -23,5 +23,15 @@
 //= require sbadmin/sb-admin.min
 //= require sbadmin/datatables-demo
 
+$(function() {
+  
+  // toggle behavior of sidebar
+  $("#sidebarToggle").on("click", function () {
+  	$( "ul.sidebar" ).toggleClass("toggled");
+  	$( "body" ).toggleClass("sidebar-toggled");
+  });
+
+
+});
 
 
