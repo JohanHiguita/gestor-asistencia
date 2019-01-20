@@ -5,7 +5,7 @@
 	<%= csrf_meta_tags %>
 	<%= csp_meta_tag %>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -14,8 +14,16 @@
 </head>
 
 <body id="page-top">
-	<!-- <p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p> -->
+	<%= render "layouts/navbar" %>
+
 	<%= yield %>
+	
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
+
+	<!-- Logout Modal-->
+	<%= render "layouts/logout_modal" %>
 </body>
 </html>
