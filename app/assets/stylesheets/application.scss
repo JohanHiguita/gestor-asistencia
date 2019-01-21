@@ -4,3 +4,9 @@
 @import "sbadmin/sb-admin.scss";
 
 
+/*arrows in options header in tables*/
+.th-opciones::before, .th-opciones::after, {
+	visibility: hidden;
+	content: none;
+}
+
