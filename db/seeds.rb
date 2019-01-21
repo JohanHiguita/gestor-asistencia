@@ -17,8 +17,8 @@ Session.destroy_all
 
 
 #cantidad de datos por tabla
-num_users = 19 #( +1 demouser)
-num_schools = (num_users + 1)*3
+num_users = 20 #( +1 demouser)
+num_schools = (num_users)*3
 num_students = 1000
 num_sessions = 200
 
@@ -32,15 +32,16 @@ num_sessions = 200
 # ActiveRecord::Base.connection.execute("ALTER SEQUENCE sessions_id_seq RESTART WITH #{num_sessions  + 1}")
 
 
-#User1:
-user = User.new
-user.id = 1
-user.email = 'demouser@gmail.com'
-user.first_name = 'Demo'
-user.last_name_1 = 'user'
-user.password = 'demouser123'
-user.password_confirmation = 'demouser123'
-user.save!
+# #User1:
+# user = User.new
+# user.id = 1
+# user.email = 'demouser@gmail.com'
+# user.first_name = 'Demo'
+# user.last_name_1 = 'user'
+# user.password = 'demouser123'
+# user.password_confirmation = 'demouser123'
+# user.cc = 12344321
+# user.save!
 
 #Users:
 _rdm_genre = Random.new
@@ -53,10 +54,9 @@ num_users.times do |i|
 
 
 	user = User.new
-	user.email = Faker::Internet.email
 	user.password = 'demouser123'
 	user.password_confirmation = 'demouser123'
-	user.last_name_1 = Faker::Name.last_name
+	user.cc = Faker::Number.number(10)
 
 	if rdm_genre == 0 && rdm_last_name2 == 0 && rdm_middle_name == 0
 		user.first_name = Faker::Name.female_first_name
@@ -90,29 +90,50 @@ num_users.times do |i|
 		user.middle_name = Faker::Name.male_first_name
 		user.last_name_2 = Faker::Name.last_name
 	end
+
+	#user 1 (Overwrite data)
+	if i==0
+		user.email = 'demouser@pygmalion.tech'
+		user.first_name = 'Demo'
+		user.last_name_1 = 'user'
+		user.middle_name = nil
+		user.last_name_2 = nil
+	else
+		user.email = Faker::Internet.email
+		user.last_name_1 = Faker::Name.last_name
+	end
+
 	user.save!
 	
 end
 
 #Schools:
 rdm_user = Random.new
+user_id = 1
 num_schools.times do |i|
 	school= School.new(
 		id: i+1,
 		code: "SEC-#{i+1}",
-		user_id: rdm_user.rand(1..num_users)
+		user_id: user_id
 		);
+	# Avoid no data (because of unique value)
 	if i.odd?
 		school.name = Faker::Educator.unique.secondary_school
 	else
 		school.name = Faker::University.unique.name
 	end
+
+	#each user has 3 schools
+	if ( (i+1) % 3 == 0) 
+		user_id += 1
+	end	
+	##puts user_id
 	school.save
 end
 
 
 #Students:
-rdm_user = Random.new
+#rdm_user = Random.new
 rdm_school = Random.new
 rdm_grade = Random.new
 rdm_age = Random.new
@@ -130,8 +151,8 @@ num_students.times do |i|
 	student.cc = Faker::Number.number(10)
 	student.grade = rdm_grade.rand(3..11)
 	student.age = rdm_age.rand(8..18)
-	student.user_id = rdm_user.rand(1..num_users)
 	student.school_id = rdm_school.rand(1..num_schools)
+	student.user_id = (School.find(student.school_id)).user_id #same user tha its school
 
 
 	if rdm_genre == 0 && rdm_last_name2 == 0 && rdm_middle_name == 0
