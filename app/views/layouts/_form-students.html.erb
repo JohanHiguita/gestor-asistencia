@@ -1,0 +1,108 @@
+<div id="wrapper">
+	<!-- Sidebar -->
+	<%= render "layouts/sidebar" %>
+
+	<div id="content-wrapper">
+
+		<div class="container-fluid">
+
+			<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<%= "Facilitador #{current_user.first_name} #{current_user.last_name_1}" %>
+				</li>
+				<li class="breadcrumb-item active">Nuevo estudiante</li>
+			</ol>
+
+			<div class="card mb-3">
+				<div class="card-header">
+					<i class="fas fa-table"></i>&nbsp;Ingresar nuevo estudiante			
+				</div>
+				<div class="card-body">
+
+					<%= form_for @student do |f| %>
+					<% if @student.errors.any? %>
+					<div class="alert alert-danger alert-block alert-fized">
+						<p>
+							<%= pluralize(@student.errors.count, "error")  %>
+							prevented this post from saving
+						</p>
+						<ul>
+							<% @student.errors.full_messages.each do |msg| %>
+							<li><%= msg %></li>
+							<% end %>
+						</ul>
+					</div>
+					<% end %>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="first_name"><b>Primer nombre</b></label>
+							<%= f.text_field :first_name, class: "form-control", id: "first_name", autofocus: true  %>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="middle_name"><b>Segundo nombre</b></label>
+							<%= f.text_field :middle_name, class: "form-control", id: "middle_name" %>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="last_name_1"><b>Primer apellido</b></label>
+							<%= f.text_field :last_name_1, class: "form-control", id: "last_name_1"%>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="last_name_2"><b>Segundo apellido</b></label>
+							<%= f.text_field :last_name_2, class: "form-control", id: "last_name_2" %>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<label for="cc"><b>Documento de Identidad</b></label>
+							<%= f.number_field :cc, class: "form-control", id: "cc", min: 1%>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="age"><b>Edad</b></label>
+							<%= f.number_field :age, class: "form-control", id: "age", min: 0, max: 100 %>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="tel"><b>Teléfono</b></label>
+							<%= f.telephone_field :cc, class: "form-control", id: "tel" %>
+						</div>
+						
+					</div>
+
+					<div class="form-group">
+						<label for="obs"><b>Observaciones</b></label>
+						<%= f.text_area :cc, class: "form-control", id: "obs", rows: 5 %>
+					</div>
+					
+					<div class="form-row">
+						<div class="form-group col-md-10">
+							<label for="school"><b>Institución</b></label>
+							<%= collection_select(:student, :school_id, School.where(user_id: current_user.id), :id, :name, {prompt: false}, {:class=>'custom-select', :id=>'school'}) %>
+						</div>
+
+						<div class="form-group col-md-2">
+							<label for="grade"><b>Grado</b></label>
+							<%= f.number_field :grade, class: "form-control", id: "grade", min: 1,max: 11 %>
+						</div>
+						
+					</div>
+					
+
+				</div>
+				<div class="card-footer">
+					<div class="form-group text-center">
+						<%= f.submit "Crear", class: "btn btn-success"%>
+						<%= link_to "Volver", students_path, class: "btn btn-secondary"%>
+					</div>
+				</div>
+				<% end %>
+			</div>
+
+		</div>
+	</div>
+
+</div>
