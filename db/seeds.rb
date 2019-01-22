@@ -20,7 +20,7 @@ Session.destroy_all
 num_users = 20 #( +1 demouser)
 num_schools = (num_users)*3
 num_students = 1000
-num_sessions = 200
+num_sessions = (num_schools)*10 # 10 sessions per School
 
 
 
@@ -114,6 +114,8 @@ num_schools.times do |i|
 	school= School.new(
 		id: i+1,
 		code: "SEC-#{i+1}",
+		ConsSede: Faker::Number.number(13),
+		comuna: Faker::Number.between(1, 16),
 		user_id: user_id
 		);
 	# Avoid no data (because of unique value)
@@ -151,6 +153,8 @@ num_students.times do |i|
 	student.cc = Faker::Number.number(10)
 	student.grade = rdm_grade.rand(3..11)
 	student.age = rdm_age.rand(8..18)
+	student.tel = Faker::Number.between(2000000, 4999999)
+	student.observations = Faker::Lorem.paragraph(6)
 	student.school_id = rdm_school.rand(1..num_schools)
 	student.user_id = (School.find(student.school_id)).user_id #same user tha its school
 
@@ -199,25 +203,40 @@ num_students.times do |i|
 	
 end
 
-#Cites:
-#Simpsons / Friends:
-# prng1 = Random.new
-# prng2 = Random.new
-# num_cites.times do |i|
-# 	rdm= prng1.rand(1..5)
-
-# 	if rdm == 1
-# 		Cite.create!(id: i+1,content: Faker::Shakespeare.hamlet_quote, book_id: prng2.rand(1..num_books)  )
-# 	elsif rdm == 2
-# 		Cite.create!(id: i+1,content: Faker::Shakespeare.as_you_like_it_quote, book_id: prng2.rand(1..num_books)  )
-# 	elsif rdm == 3
-# 		Cite.create!(id: i+1,content: Faker::Shakespeare.king_richard_iii_quote, book_id: prng2.rand(1..num_books)  )
-# 	elsif rdm == 4
-# 		Cite.create!(id: i+1,content: Faker::Shakespeare.romeo_and_juliet_quote, book_id: prng2.rand(1..num_books)  )	
-# 	else
-# 		Cite.create!(id: i+1,content: Faker::StarWars.quote, book_id: prng2.rand(1..num_books)  )
-
-# 	end
+#Sessions:
+year=2018
+min=0
+_rdm_month = Random.new
+_rdm_day = Random.new
+_rdm_hour = Random.new
 
 
-# end
+school_id = 1
+session_number = 1
+num_sessions.times do |i|
+	rdm_month = _rdm_month.rand(10..11) # Oct - Nov
+	rdm_day = _rdm_day.rand(1..30)
+	rdm_hour = _rdm_hour.rand(12..17) # 12pm - 5pm
+	session = Session.new
+	session.school_id = school_id
+	school = School.find(school_id)
+	session.user_id = school.user_id # same user
+	session.student_ids = school.student_ids # same students
+	session.time = Time.local(year,rdm_month, rdm_day, rdm_hour, min)
+	session.number = session_number
+	session_number += 1 
+
+
+	#each school has 10 session (session_number 1 -10)
+	if ( (i+1) % 10 == 0) 
+		school_id += 1
+		session_number = 1
+	end	
+	
+	session.save
+
+	
+	
+end
+
+
