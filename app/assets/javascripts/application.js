@@ -15,15 +15,14 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+
 
 //= require sbadmin/jquery.easing.min
 //= require sbadmin/jquery.dataTables
 //= require sbadmin/dataTables.bootstrap4
 //= require sbadmin/sb-admin.min
 //= require sbadmin/datatables-demo
-
-$(document).on("turbolinks:load", function() {
+$(function() {
   // toggle behavior of sidebar
   $("#sidebarToggle, .btn-sidebar").on("click", function () {
   	//alert("P");
