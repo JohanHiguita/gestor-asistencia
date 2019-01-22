@@ -1,0 +1,52 @@
+<div id="wrapper">
+	<!-- Sidebar -->
+	<%= render "layouts/sidebar" %>
+
+	<div id="content-wrapper">
+
+		<div class="container-fluid">
+
+			<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<%= "Facilitador #{current_user.first_name} #{current_user.last_name_1}" %>
+				</li>
+				<li class="breadcrumb-item active">Estudiantes</li>
+
+				<li class="breadcrumb-item active">Detalles de estudiante</li>
+				
+			</ol>
+
+			<div class="card mb-3">
+				<div class="card-header">
+					<i class="fas fa-info-circle"></i>&nbsp;Detalles			
+				</div>
+				<div class="card-body">
+					<h2><%= @student.fullName %></h2>
+					<span><b>Institución:</b></span>&nbsp;<span><%= @student.school.name %></span><br />
+					<span><b>Documento de identidad:</b></span>&nbsp;<span><%= @student.cc %></span><br />
+					<span><b>Grado:</b></span>&nbsp;<span><%= "#{@student.grade}°" %></span><br />
+					<span><b>Edad:</b></span>&nbsp;<span><%= "#{@student.age} años" %></span><br />
+					<span><b>Teléfono:</b></span>&nbsp;<span><%= @student.tel %></span><br />
+					<span><b>Observaciones:</b></span>
+					<p><%= @student.observations %></p>
+
+					
+				</div>
+				<div class="card-footer">
+					<%= link_to edit_student_path(@student), class: "btn btn-warning btn-sm", title: "Editar" do %>
+					<span>Editar</span>
+					<!-- <i class="fas fa-edit text-dark"></i> -->
+					<% end %>
+
+					<%= link_to  student_path(@student), method: :delete, data: {confirm: "¿Está seguro de eliminar el registro del estudiante ?"}, class: "btn btn-danger btn-sm", title: "Eliminar" do%>
+					<span>Eliminar</span>
+					<!-- <i class="far fa-trash-alt text-dark"></i> -->
+					<% end %>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</div>

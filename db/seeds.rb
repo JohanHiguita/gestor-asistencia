@@ -226,7 +226,6 @@ num_sessions.times do |i|
 	session.number = session_number
 	session_number += 1 
 
-
 	#each school has 10 session (session_number 1 -10)
 	if ( (i+1) % 10 == 0) 
 		school_id += 1
