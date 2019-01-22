@@ -13,7 +13,7 @@ require 'faker'
 User.destroy_all
 School.destroy_all
 Student.destroy_all
-Session.destroy_all
+Class_Session.destroy_all
 
 
 #cantidad de datos por tabla
@@ -217,12 +217,12 @@ num_sessions.times do |i|
 	rdm_month = _rdm_month.rand(10..11) # Oct - Nov
 	rdm_day = _rdm_day.rand(1..30)
 	rdm_hour = _rdm_hour.rand(12..17) # 12pm - 5pm
-	session = Session.new
+	session = Class_Session.new
 	session.school_id = school_id
 	school = School.find(school_id)
 	session.user_id = school.user_id # same user
 	session.student_ids = school.student_ids # same students
-	session.time = Time.local(year,rdm_month, rdm_day, rdm_hour, min)
+	session.time = Time.utc(year,rdm_month, rdm_day, rdm_hour, min)
 	session.number = session_number
 	session_number += 1 
 

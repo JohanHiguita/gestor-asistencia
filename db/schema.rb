@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_22_140434) do
+ActiveRecord::Schema.define(version: 2019_01_22_223630) do
+
+  create_table "class_sessions", force: :cascade do |t|
+    t.integer "number"
+    t.time "time"
+    t.integer "user_id"
+    t.integer "school_id"
+    t.integer "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_class_sessions_on_school_id"
+    t.index ["student_id"], name: "index_class_sessions_on_student_id"
+    t.index ["user_id"], name: "index_class_sessions_on_user_id"
+  end
+
+  create_table "class_sessions_students", id: false, force: :cascade do |t|
+    t.integer "class_session_id", null: false
+    t.integer "student_id"
+    t.integer "class_sessions_id"
+    t.index ["class_sessions_id"], name: "index_class_sessions_students_on_class_sessions_id"
+    t.index ["student_id"], name: "index_class_sessions_students_on_student_id"
+  end
 
   create_table "schools", force: :cascade do |t|
     t.string "name"
@@ -21,26 +42,6 @@ ActiveRecord::Schema.define(version: 2019_01_22_140434) do
     t.bigint "ConsSede"
     t.integer "comuna"
     t.index ["user_id"], name: "index_schools_on_user_id"
-  end
-
-  create_table "sessions", force: :cascade do |t|
-    t.integer "number"
-    t.time "time"
-    t.integer "user_id"
-    t.integer "school_id"
-    t.integer "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["school_id"], name: "index_sessions_on_school_id"
-    t.index ["student_id"], name: "index_sessions_on_student_id"
-    t.index ["user_id"], name: "index_sessions_on_user_id"
-  end
-
-  create_table "sessions_students", id: false, force: :cascade do |t|
-    t.integer "session_id"
-    t.integer "student_id"
-    t.index ["session_id"], name: "index_sessions_students_on_session_id"
-    t.index ["student_id"], name: "index_sessions_students_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|

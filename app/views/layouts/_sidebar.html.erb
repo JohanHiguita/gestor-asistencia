@@ -11,25 +11,27 @@
 		<% end %>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="/students/new">
-			<i class="fas fa-user-plus"></i>
-			<span>Nuevo estudiante</span>
-		</a>
+		<%= link_to new_student_path, class: "nav-link",title:"Agregar estudiante" do%>
+		<i class="fas fa-user-plus"></i>
+		<span>Nuevo estudiante</span>
+		<% end %>
 	</li>
 	
 	<li class="nav-item">
-		<a class="nav-link" href="#">
-			<i class="fas fa-plus-circle"></i>
-			<span>Ingresar asistencia</span>
-		</a>
+		<%= link_to class_sessions_path, class: "nav-link",title:"Sesiones" do%>
+		<i class="fas fa-list-ul"></i>
+		<span>Sesiones</span>
+		<% end %>
 	</li>
 
 	<li class="nav-item">
-		<a class="nav-link" href="#">
-			<i class="fas fa-list-ul"></i>
-			<span>Asistencias</span>
-		</a>
+		<%= link_to new_class_session_path, class: "nav-link",title:"Agregar sesión" do%>
+		<i class="fas fa-plus-circle"></i>
+		<span>Nueva sesión</span>
+		<% end %>
 	</li>
+
+	
 
 	<!-- <li class="nav-item active">
 		<a class="nav-link" href="tables.html">
