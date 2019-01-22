@@ -23,12 +23,14 @@
 //= require sbadmin/sb-admin.min
 //= require sbadmin/datatables-demo
 
-$(function() {
-  
+$(document).on("turbolinks:load", function() {
   // toggle behavior of sidebar
-  $("#sidebarToggle").on("click", function () {
+  $("#sidebarToggle, .btn-sidebar").on("click", function () {
+  	//alert("P");
   	$( "ul.sidebar" ).toggleClass("toggled");
   	$( "body" ).toggleClass("sidebar-toggled");
+  	$(".chevron-sidebar").toggleClass("fa-chevron-left");
+  	$(".chevron-sidebar").toggleClass("fa-chevron-right");
   });
 
 

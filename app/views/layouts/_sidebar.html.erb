@@ -1,6 +1,17 @@
 <ul class="sidebar navbar-nav">
+	<li class="nav-item text-center">
+		<button class="btn btn-link btn-sm nav-text btn-block text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+			<i class="fas fa-chevron-left chevron-sidebar"></i>
+		</button>
+	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="#">
+		<%= link_to students_path, class: "nav-link",title:"Lista de estudiantes" do%>
+		<i class="fas fa-users"></i>
+		<span>Estudiantes</span>
+		<% end %>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="/students/new">
 			<i class="fas fa-user-plus"></i>
 			<span>Nuevo estudiante</span>
 		</a>
