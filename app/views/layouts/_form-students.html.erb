@@ -11,7 +11,12 @@
 				<li class="breadcrumb-item">
 					<%= "Facilitador #{current_user.first_name} #{current_user.last_name_1}" %>
 				</li>
-				<li class="breadcrumb-item active">Nuevo estudiante</li>
+				<% if @student.new_record? %>
+					<li class="breadcrumb-item active">Nuevo estudiante</li>
+				<% else %>
+					<li class="breadcrumb-item active">Editar estudiante</li>
+				<% end %>
+				
 			</ol>
 
 			<div class="card mb-3">
@@ -91,14 +96,18 @@
 						<label for="obs"><b>Observaciones</b></label>
 						<%= f.text_area :observations, class: "form-control", id: "obs", rows: 5 %>
 					</div>
-					
-				</div>
-				<div class="card-footer">
-					<div class="form-group text-center">
-						<%= f.submit "Crear", class: "btn btn-success"%>
+					<hr>
+					<div class="form-group text-center mt-4">
+						<% if @student.new_record? %>
+							<%= f.submit "Crear", class: "btn btn-success"%>
+						<% else %>
+							<%= f.submit "Guardar", class: "btn btn-warning"%>
+						<% end %>
 						<%= link_to "Volver", students_path, class: "btn btn-secondary"%>
 					</div>
+					
 				</div>
+			
 				<% end %>
 			</div>
 
