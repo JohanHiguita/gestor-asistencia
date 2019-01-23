@@ -1,0 +1,9 @@
+//$("<%#= j render "students_table", title: "Crear autor" %>").html()
+
+//$("<%#= escape_javascript(render @students) %>").appendTo(".cont-students-session");
+// $(".cont-students-session").html("Contenido");
+
+
+//$("<%#= escape_javascript(render @student) %>").appendTo(".cont-students-session");
+//alert("Oe");
+$(".cont-students-session").html("<%= j (render 'students_table', students: @students) %>");

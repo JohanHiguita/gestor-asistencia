@@ -23,7 +23,6 @@ class StudentsController < ApplicationController
     if @student.save
       flash[:notice]= "¡El estudiante se ha almacenado exitosamente!"
     else
-      @topics=Topic.all
       flash[:alert] = "Error al crear el estudiante"
     end
     redirect_to new_student_path

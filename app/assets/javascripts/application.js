@@ -23,6 +23,7 @@
 //= require sbadmin/sb-admin.min
 //= require sbadmin/datatables-demo
 $(function() {
+
   // toggle behavior of sidebar
   $("#sidebarToggle, .btn-sidebar").on("click", function () {
   	//alert("P");
@@ -31,6 +32,16 @@ $(function() {
   	$(".chevron-sidebar").toggleClass("fa-chevron-left");
   	$(".chevron-sidebar").toggleClass("fa-chevron-right");
   });
+
+  $('.select_school_session').change(function(){
+  	var school_id = $('.select_school_session option:selected').val();
+		$.ajax({
+			url: "find/students_selection",
+			type: "GET",
+			data: {school_id: school_id}
+		})
+
+	});
 
 
 });
