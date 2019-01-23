@@ -38,24 +38,24 @@
 					<div class="form-row">
 						<div class="form-group col-md-9">
 							<label for="school"><b>Institución</b></label>
-							<%= collection_select(:class_session, :school_id, School.where(user_id: current_user.id), :id, :name, {prompt: false}, {:class=>'custom-select select_school_session', :id=>'school'}) %>
+							<%= collection_select(:class_session, :school_id, School.where(user_id: current_user.id), :id, :name, {prompt: false}, {:class=>'custom-select select_school_session', :id=>'school', autofocus: true, :required => true}) %>
 						</div>
 						<div class="form-group col-md-3">
 							<label for="number"><b># Sesión</b></label>
-							<%= f.number_field :number, class: "form-control", id: "number",min: 1 %>
+							<%= f.number_field :number, class: "form-control", id: "number",min: 1, :required => true %>
 						</div>
 					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="date"><b>Fecha</b></label>
-							<input class="form-control" type="date" name="class_session[date]">
+							<input class="form-control" type="date" name="date" required>
 							
 						</div>
 						<div class="form-group col-md-3">
-							<label for="last_name_2"><b>Hora</b></label>
+							<label for="last_name_2"><b>Hora</b></label><small class="text-muted">  24:00Hrs</small>
 							<!-- timeHM has to be different to time because it can be confused with clas_session.date -->
-							<input class="form-control" type="time" name="class_session[timeHM]">
+							<input class="form-control" type="time" name="timeHM" placeholder="HH:MM" required>
 						</div>
 						<div class="form-group col-md-3">
 							<label for="last_name_2"><b>Semana</b></label>
