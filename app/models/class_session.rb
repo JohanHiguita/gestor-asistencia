@@ -12,6 +12,7 @@ class Class_Session < ApplicationRecord
 	end
 
 	def week
-		(self.time).strftime "%W"
+		((self.time).strftime  "%W").to_i + 1
+		
 	end
 end
