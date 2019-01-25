@@ -26,12 +26,17 @@ $(function() {
   $('.select_school_session').change(function(){
   	var school_id = $('.select_school_session option:selected').val();
     $.ajax({
-     url: "find/students_selection",
+     url: "/class_sessions/find/students_selection",
      type: "GET",
      data: {school_id: school_id}
    })
-
   });
+
+    $(".btn-edit-session").on("click", function(){
+      alert("Oe");
+      
+    });
+
 
  
 

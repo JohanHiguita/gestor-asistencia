@@ -37,10 +37,16 @@ class ClassSessionsController < ApplicationController
 
   def edit
     @session=Class_Session.find(params[:id])
+    #byebug
+    #@current_students = 
+
+
   end
 
 def update
   @session = Class_Session.find(params[:id])
+
+  #update the other params
 
     # if @session.update(class_session_params)
     #   flash[:notice]= "¡El estudiante se ha almacenado exitosamente!"
@@ -69,4 +75,5 @@ def update
   def class_session_params
     params.require(:class_session).permit(:number, :user_id, :school_id, :student_ids) #solo permite estos datos
   end
+
 end

@@ -38,7 +38,8 @@
 					<div class="form-row">
 						<div class="form-group col-lg-6">
 							<label for="school"><b>Institución</b></label>
-							<%= collection_select(:class_session, :school_id, School.where(user_id: current_user.id), :id, :name, {prompt: false}, {:class=>'custom-select select_school_session', :id=>'school', autofocus: true, :required => true}) %>
+							<%#= collection_select(:class_session, :school_id, School.where(user_id: current_user.id), :id, :getName, {prompt: false}, {:class=>'custom-select select_school_session', :id=>'school', autofocus: true, :required => true, :selected => "1"}) %>
+							<%= select_tag :class_session, options_from_collection_for_select(School.where(user_id: current_user.id), :id, :name), {:class=>'custom-select select_school_session', :id=>'school', autofocus: true, :required => true} %>
 						</div>
 						
 						<div class="form-group col-lg-2">

@@ -4,8 +4,8 @@ class School < ApplicationRecord
 	has_many :students
 	has_many :class_sessions
 	
-	def name_with_initial
-		this.name
+	def getName
+		self.name
 	end
 
 end
