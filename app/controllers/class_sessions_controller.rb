@@ -21,7 +21,7 @@ class ClassSessionsController < ApplicationController
     hr = Time.parse(params[:timeHM]).hour
     min = Time.parse(params[:timeHM]).min
     time = Time.utc(y, m, d, hr, min)
-    @session = Class_Session.new(class_session_params) #Create with number and school_id
+    @session = Class_Session.new(class_session_params) #Create only with number and school_id
     #Add the rest of fields
     @session.user_id = current_user.id
     @session.student_ids = student_ids
@@ -37,42 +37,54 @@ class ClassSessionsController < ApplicationController
 
   def edit
     @session=Class_Session.find(params[:id])
+
     #byebug
     #@current_students = 
-
-
   end
 
-def update
-  @session = Class_Session.find(params[:id])
+  def update
+    @session = Class_Session.find(params[:id])
+    student_ids= params[:student_ids].values.map(&:to_i)
+    #Field Time (separate in date and time)
+    y = Time.parse(params[:date]).year
+    m = Time.parse(params[:date]).month
+    d = Time.parse(params[:date]).day
+    hr = Time.parse(params[:timeHM]).hour
+    min = Time.parse(params[:timeHM]).min
+    time = Time.utc(y, m, d, hr, min)
 
-  #update the other params
+    @session.update(student_ids: student_ids)
+    @session.update(time: time)  
 
-    # if @session.update(class_session_params)
-    #   flash[:notice]= "¡El estudiante se ha almacenado exitosamente!"
-    # else
-    #   flash[:alert] = "Error al crear el estudiante"
-    # end
-    # redirect_to class_sessions_path
+  #Create only with number and school_id
+
+  if @session.update(class_session_params)
+    flash[:notice]= "¡El registro ha sido modificado exitosamente!"
+    redirect_to class_sessions_path
+  else
+    flash[:alert] = "Error al editar el registro del estudiante"
+    render :edit
   end
+  
+end
 
-  def show
+def show
 
-  end
+end
 
-  def destroy
-  end
+def destroy
+end
 
-  def students_selection
-    @students = Student.where(school_id: params[:school_id]).order(:last_name_1)
-    respond_to do |format|
-     format.js {  }
-    end
-  end
+def students_selection
+  @students = Student.where(school_id: params[:school_id]).order(:last_name_1)
+  respond_to do |format|
+   format.js {  }
+ end
+end
 
- private
+private
 
-  def class_session_params
+def class_session_params
     params.require(:class_session).permit(:number, :user_id, :school_id, :student_ids) #solo permite estos datos
   end
 

@@ -32,10 +32,10 @@ $(function() {
    })
   });
 
-    $(".btn-edit-session").on("click", function(){
-      alert("Oe");
+    // $(".btn-edit-session").on("click", function(){
+    
       
-    });
+    // });
 
 
  

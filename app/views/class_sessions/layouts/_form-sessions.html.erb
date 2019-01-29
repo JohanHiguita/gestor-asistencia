@@ -11,14 +11,25 @@
 				<li class="breadcrumb-item">
 					<%= "#{current_user.first_name} #{current_user.last_name_1}" %>
 				</li>
+				<% if @session.new_record? %>
 				<li class="breadcrumb-item active">Nueva sesión</li>
+				<% else %>
+				<li class="breadcrumb-item active">Editar sesión</li>
+				<% end %>
 			</ol>
 
 			<!-- DataTables Example -->
 			<div class="card mb-3">
 				<div class="card-header">
 					<i class="fas fa-table"></i>
-				Ingresar nueva sesión</div>
+					<% if @session.new_record? %>
+					Ingresar nueva sesión
+					<% else %>
+					Editar sesión
+					<% end %>
+					
+				</div>
+
 				<div class="card-body">
 					<%= form_for @session do |f| %>
 					<% if @session.errors.any? %>
@@ -38,8 +49,10 @@
 					<div class="form-row">
 						<div class="form-group col-lg-6">
 							<label for="school"><b>Institución</b></label>
-							<%#= collection_select(:class_session, :school_id, School.where(user_id: current_user.id), :id, :getName, {prompt: false}, {:class=>'custom-select select_school_session', :id=>'school', autofocus: true, :required => true, :selected => "1"}) %>
-							<%= select_tag :class_session, options_from_collection_for_select(School.where(user_id: current_user.id), :id, :name), {:class=>'custom-select select_school_session', :id=>'school', autofocus: true, :required => true} %>
+							<%= collection_select(:class_session, :school_id, School.where(user_id: current_user.id), :id, :getName, {prompt: false}, {:class=>'custom-select select_school_session', :id=>'school', autofocus: true, :required => true, :selected => "1"}) %>
+							<%#= select_tag "school", options_from_collection_for_select(School.where(user_id: current_user.id), :id, :name), {:class=>'custom-select select_school_session', :id=>'school', autofocus: true, :required => true} %>
+
+							<!-- continue in https://guides.rubyonrails.org/v2.3/form_helpers.html -->
 						</div>
 						
 						<div class="form-group col-lg-2">
@@ -64,7 +77,7 @@
 						<!-- table students -->
 					</div>
 
-				
+
 					<hr>
 					<div class="form-group text-center mt-4">
 						<% if @session.new_record? %>

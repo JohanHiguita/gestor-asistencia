@@ -24,6 +24,7 @@
 						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 							<thead>
 								<tr>
+									<th>id</th>
 									<th class="th-fecha">Fecha</th>
 									<th>Hora</th>
 									<th>Semana</th>
@@ -35,6 +36,7 @@
 							</thead>
 							<tfoot>
 								<tr>
+									<th>id</th>
 									<th>Fecha</th>
 									<th>Hora</th>
 									<th>Semana</th>
@@ -47,6 +49,7 @@
 							<tbody>
 								<% @sessions.each do |session| %>
 								<tr>
+									<td><%=  session.id %></td>
 									<td><%=  session.showDate %></td>
 									<td><%=  session.showTime %></td>
 									<td><%= session.week %></td>
