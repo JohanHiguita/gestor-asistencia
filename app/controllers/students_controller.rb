@@ -40,6 +40,11 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+    student = Student.find(params[:id])
+    student_name = student.fullName
+    student.destroy
+    flash[:notice]="El se ha eliminado el estudiante #{student_name}"
+    redirect_to students_path
   end
 
 

@@ -2,11 +2,11 @@ class ClassSessionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @sessions = Class_Session.where(user_id: current_user.id)
+    @sessions = ClassSession.where(user_id: current_user.id)
   end
 
   def new
-    @session = Class_Session.new
+    @session = ClassSession.new
     # @students = Student.where(user_id: current_user)
     @students = []
   end
@@ -21,7 +21,7 @@ class ClassSessionsController < ApplicationController
     hr = Time.parse(params[:timeHM]).hour
     min = Time.parse(params[:timeHM]).min
     time = Time.utc(y, m, d, hr, min)
-    @session = Class_Session.new(class_session_params) #Create only with number and school_id
+    @session = ClassSession.new(class_session_params) #Create only with number and school_id
     #Add the rest of fields
     @session.user_id = current_user.id
     @session.student_ids = student_ids
@@ -36,14 +36,14 @@ class ClassSessionsController < ApplicationController
   end
 
   def edit
-    @session=Class_Session.find(params[:id])
+    @session=ClassSession.find(params[:id])
 
     #byebug
     #@current_students = 
   end
 
   def update
-    @session = Class_Session.find(params[:id])
+    @session = ClassSession.find(params[:id])
     student_ids= params[:student_ids].values.map(&:to_i)
     #Field Time (separate in date and time)
     y = Time.parse(params[:date]).year
@@ -65,7 +65,7 @@ class ClassSessionsController < ApplicationController
     flash[:alert] = "Error al editar el registro del estudiante"
     render :edit
   end
-  
+
 end
 
 def show
