@@ -10,7 +10,9 @@ dates header (abc)*/
 .th-opciones::before, 
 .th-opciones::after,
 .th-fecha::before,
-.th-fecha::after
+.th-fecha::after,
+.th-time::before,
+.th-time::after
  {
 	visibility: hidden;
 	content: none;
