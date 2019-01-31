@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   before_action :authenticate_user!
+  #before_action :authenticate_admin!
   def index
     @students = Student.where(user_id: current_user.id)
 
