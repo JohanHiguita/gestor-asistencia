@@ -16,7 +16,9 @@
 </head>
 
 <body id="page-top">
+	<% if user_signed_in? %>
 	<%= render "layouts/navbar" %>
+	<% end %>
 
 	<%= yield %>
 
@@ -26,13 +28,9 @@
 	</a>
 
 	<!-- Sticky Footer -->
-	<footer class="sticky-footer">
-		<div class="container my-auto">
-			<div class="copyright text-center my-auto">
-				<span><a href="https://pygmalion.tech/">© Pygmalion</a> 2019</span>
-			</div>
-		</div>
-	</footer>
+	<% if user_signed_in? %>
+	<%= render "layouts/footer"  %>
+	<% end %>
 
 	<!-- Logout Modal-->
 	<%= render "layouts/logout_modal" %>
