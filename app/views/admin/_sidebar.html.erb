@@ -1,36 +1,36 @@
 <ul class="sidebar navbar-nav">
-	<li class="nav-item text-center">
-		<button class="btn btn-link btn-sm nav-text btn-block text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-			<i class="fas fa-chevron-left chevron-sidebar"></i>
-		</button>
-	</li>
-	<li class="nav-item">
-		<%= link_to students_path, class: "nav-link",title:"Lista de estudiantes" do%>
-		<i class="fas fa-users"></i>
-		<span>Estudiantes</span>
-		<% end %>
-	</li>
-	<li class="nav-item">
-		<%= link_to new_student_path, class: "nav-link",title:"Agregar estudiante" do%>
-		<i class="fas fa-user-plus"></i>
-		<span>Nuevo estudiante</span>
-		<% end %>
-	</li>
-	
-	<li class="nav-item">
-		<%= link_to class_sessions_path, class: "nav-link",title:"Sesiones" do%>
-		<i class="fas fa-list-ul"></i>
-		<span>Sesiones</span>
-		<% end %>
-	</li>
+	<div>
+		<li class="nav-item text-center">
+			<button class="btn btn-link btn-sm nav-text btn-block text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+				<i class="fas fa-chevron-left chevron-sidebar"></i>
+			</button>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#header_table_facilitadores" title="Facilitadores">
+				<i class="fas fa-users"></i>
+				<span>Facilitadores</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#header_table_schools" title="Instituciones">
+				<i class="fas fa-school"></i>
+				<span>Instituciones</span>
+			</a>
+		</li>
+		
 
-	<li class="nav-item">
-		<%= link_to new_class_session_path, class: "nav-link",title:"Agregar sesión" do%>
-		<i class="fas fa-plus-circle"></i>
-		<span>Nueva sesión</span>
-		<% end %>
-	</li>
+		<li class="nav-item">
+			<%= link_to class_sessions_path, class: "nav-link",title:"Sesiones" do%>
+			<i class="fas fa-list-ul"></i>
+			<span>Sesiones</span>
+			<% end %>
+		</li>
 
-
-
+		<li class="nav-item">
+			<%= link_to new_class_session_path, class: "nav-link",title:"Agregar sesión" do%>
+			<i class="fas fa-plus-circle"></i>
+			<span>Nueva sesión</span>
+			<% end %>
+		</li>		
+	</div>
 </ul>
