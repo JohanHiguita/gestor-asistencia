@@ -1,0 +1,48 @@
+<div class="card mb-3">
+	<div class="card-header text-center header_table_admin" id="header_table_sessions">
+		<i class="fas fa-list"></i>
+	Sesiones</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered table-striped table-sm" id="sessionsTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th>Semana</th>
+						<th>Institución</th>
+						<th>Facilitador</th>
+						<th>Asistencia</th>
+						<th class="th-opciones">Opciones</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th>Semana</th>
+						<th>Institución</th>
+						<th>Facilitador</th>
+						<th>Asistencia</th>
+						<th class="th-opciones">Opciones</th>
+					</tr>
+				</tfoot>
+				<tbody>
+					<% @sessions.each do |session| %>
+					<tr>
+						<td><%=  session.week %></td>
+						<td><%=  session.school ? session.school.name : session.school%></td>
+						<td><%=  session.user ? session.user.fullName : session.user %></td>
+						<td><%=  session.students.count %></td>		
+						<td>
+							<div class="btn-group btn-group-sm" role="group">
+								<a href="">1</a>
+								<a href="">2</a>
+								<a href="">3</a>
+							</div>
+						</td>
+					</tr>
+
+					<% end %>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>	
+</div>
