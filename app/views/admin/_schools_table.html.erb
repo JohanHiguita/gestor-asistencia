@@ -1,0 +1,54 @@
+<div class="card mb-3">
+	<div class="card-header text-center header_table_admin" id="schools_table">
+		<i class="fas fa-school"></i>
+	Instituciones Educativas</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th>Código</th>
+						<th>Institución</th>
+						<th>Grupo</th>
+						<th>Facilitador</th>
+						<th>Sesiones</th>
+						<th>Estudiantes / Sesión</th>
+						<th class="th-opciones">Opciones</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th>Código</th>
+						<th>Institución</th>
+						<th>Grupo</th>
+						<th>Facilitador</th>
+						<th>Sesiones</th>
+						<th>Estudiantes / Sesión</th>
+						<th>Opciones</th>
+					</tr>
+				</tfoot>
+				<tbody>
+					<% @schools.each do |school| %>
+					<tr>
+						<td><%=  school.code %></td>
+						<td><%=  school.name %></td>
+						<td><%=  "SEC o PRI" %></td>
+						<td><%=  school.user ? school.user.fullName : school.user %></td>
+						<td><%=  school.class_sessions.count %></td>
+						<td><%= "promedio" %></td>		
+						<td>
+							<div class="btn-group btn-group-sm" role="group">
+								<a href="">1</a>
+								<a href="">2</a>
+								<a href="">3</a>
+							</div>
+						</td>
+					</tr>
+
+					<% end %>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>	
+</div>

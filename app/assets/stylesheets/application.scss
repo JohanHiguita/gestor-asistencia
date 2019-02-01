@@ -13,7 +13,7 @@ dates header (abc)*/
 .th-fecha::after,
 .th-time::before,
 .th-time::after
- {
+{
 	visibility: hidden;
 	content: none;
 }
@@ -21,3 +21,16 @@ dates header (abc)*/
 tr {
 	text-align: center;
 }
+
+.header_table_admin{
+	font-size: 2rem;
+}
+
+#facilitadores_table{
+	background-color: #bae9ff;
+}
+
+#schools_table{
+	background-color: #baffdd;
+}
+
