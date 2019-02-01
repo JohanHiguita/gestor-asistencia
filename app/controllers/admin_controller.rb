@@ -6,6 +6,7 @@ class AdminController < ApplicationController
   	@sessions = ClassSession.all
   end
 
+  #Facilitadores:
   def show_facilitador
   	@facilitador=User.find(params[:id])	
   end
@@ -16,6 +17,11 @@ class AdminController < ApplicationController
     facilitador.destroy
     flash[:notice]="El se ha eliminado el registro del facilitador"
     redirect_to admin_index_path
+  end
+
+  #Schools
+  def show_school
+  	@school=School.find(params[:id])	
   end
 
 end

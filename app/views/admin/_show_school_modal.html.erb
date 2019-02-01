@@ -1,0 +1,27 @@
+<div class="modal fade" id="show-school-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title" id="exampleModalLabel"><h3><%= @school.name %></h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>
+					<span><b>Grupo: </b><%= @school.code %></span><br />
+					<span><b>Comuna: </b><%= @school.comuna %></span><br />
+					<span><b>Cons. Sede: </b><%= @school.ConsSede %></span><br />
+					<span><b>Facilitador: </b><%= @school.user.fullName %></span><br />
+				</p>
+			
+				<p>
+					<span><b>Sesiones ejecutadas: </b><%= @school.class_sessions.count %></span><br />
+					<span><b>Promedio asistencia (Estudiantes/sesión): </b><%= @school.students_avg %></span><br />
+				</p>
+				
+			</div>
+
+		</div>
+	</div>
+</div>
