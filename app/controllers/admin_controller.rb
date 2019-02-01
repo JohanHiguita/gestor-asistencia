@@ -5,4 +5,9 @@ class AdminController < ApplicationController
   	@schools = School.all
   	@sessions = ClassSession.all
   end
+
+  def show_facilitador
+  	@facilitador=User.find(params[:id])	
+  end
+
 end

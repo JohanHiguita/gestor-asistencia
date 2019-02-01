@@ -1,0 +1,32 @@
+<div class="modal fade" id="show-facilitador-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title" id="exampleModalLabel"><h3><%= @facilitador.fullName %></h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>
+					<span><b>Cédula: </b><%= @facilitador.cc %></span><br />
+					<span><b>Correo: </b><%= @facilitador.email %></span><br />
+				</p>
+				<p>
+					<h5>Instituciones:</h5>
+					<ul>
+						<% @facilitador.schools.each do |school| %>
+						<li><%= school.name%> <em><%= "(#{school.class_sessions.count} Sesiones)" %></em></li>
+						<% end %>
+					</ul>
+				</p>
+				<p>
+					<span><b>Sesiones ejecutadas: </b><%= @facilitador.class_sessions.count %></span><br />
+					<span><b>Promedio asistencia (Estudiantes/sesión): </b><%= @facilitador.students_avg %></span><br />
+				</p>
+				
+			</div>
+
+		</div>
+	</div>
+</div>
