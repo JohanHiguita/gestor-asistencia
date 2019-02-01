@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 	#Admin routes:
 	get 'admin/index'
 	get 'admin/facilitador/:id', to: 'admin#show_facilitador', as: 'facilitador'
+	delete "admin/facilitador/:id", to: 'admin#destroy_facilitador'
 
 	#Facilitadores routes:
 	resources :students	
