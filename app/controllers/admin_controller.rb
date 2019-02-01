@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
 
   def index
-  	@users = User.all
+  	@facilitadores = User.all
+  	@session = ClassSession.all
   end
 end
