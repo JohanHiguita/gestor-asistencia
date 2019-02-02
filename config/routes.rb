@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 	get 'admin/index'
 	get 'admin/facilitador/:id', to: 'admin#show_facilitador', as: 'facilitador'
 	delete "admin/facilitador/:id", to: 'admin#destroy_facilitador'
-	get 'admin/schools/new', to: 'admin#new_school', as: 'new_school'
-	post 'admin/schools', to: 'admin#create_school'
+	# get 'admin/schools/new', to: 'admin#new_school', as: 'new_school'
+	# post 'admin/schools', to: 'admin#create_school'
 	#get 'admin/school/:id', to: 'admin#show_school', as: 'school'
 
 	#Facilitadores routes:

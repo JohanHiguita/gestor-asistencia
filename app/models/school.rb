@@ -3,6 +3,10 @@ class School < ApplicationRecord
 	belongs_to :user
 	has_many :students, dependent: :destroy
 	has_many :class_sessions, dependent: :destroy
+
+
+	#set Role
+	enum role: [:pri, :sec]
 	
 	def getName
 		self.name

@@ -7,13 +7,14 @@ class SchoolsController < ApplicationController
   end
 
   def new
+     @school=School.new
   end
 
   def edit
   end
 
   def create
-    
+
   end
 
   def update
@@ -22,4 +23,11 @@ class SchoolsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def school_params
+  params.require(:school).permit(:name, :user_id, :code,:ConsSede, :comuna) #solo permite estos datos
+
+end
 end
