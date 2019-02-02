@@ -1,6 +1,11 @@
 <div class="card mb-3">
 	<div class="card-header">
-		<i class="fas fa-table"></i>&nbsp;Ingresar nueva institución			
+		<i class="fas fa-table"></i>&nbsp;
+		<% if @school.new_record? %>
+		Ingresar nueva institución
+		<% else %>
+		Editar institución
+		<% end %>			
 	</div>
 	<div class="card-body">
 
@@ -33,10 +38,18 @@
 		<div class="form-row">
 			<div class="form-group col-md-3">
 				<label for="school_level"><b>Nivel</b></label>
+				<%#= select_tag(:level, options_for_select([['Primaria', 'pri'], ['Secundaria', 'sec']]), {class: "custom-select", id: "school_level", name: "school[level]", :selected => "sec"}) %>
+
 				<select class="custom-select" id="school_level" name="school[level]">
-					<option value="pri">Primaria</option>
+					<% if @school.sec? %>
+					<option value="pri" >Primaria</option>
+					<option value="sec" selected="selected">Secundaria</option>
+					<% else %>
+					<option value="pri" selected="selected">Primaria</option>
 					<option value="sec">Secundaria</option>
-				</select>
+					<% end %>
+					
+				</select> 
 			</div>
 			<div class="form-group col-md-3">
 				<label for="school_code"><b>Código</b></label>

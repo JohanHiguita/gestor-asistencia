@@ -9,6 +9,9 @@
 			</div>
 			<div class="modal-body">
 				<p>
+					<span><b>Nivel: </b>
+						<%= @school.level ? @school.level.upcase : @school.level%>
+					</span><br />
 					<span><b>Grupo: </b><%= @school.code %></span><br />
 					<span><b>Comuna: </b><%= @school.comuna %></span><br />
 					<span><b>Cons. Sede: </b><%= @school.ConsSede %></span><br />

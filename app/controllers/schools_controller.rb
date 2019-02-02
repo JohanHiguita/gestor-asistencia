@@ -11,10 +11,11 @@ class SchoolsController < ApplicationController
  end
 
  def edit
- end
+  @school=School.find(params[:id])
+end
 
- def create
-  byebug
+def create
+
   @school = School.new(school_params)
   
   if @school.save!
@@ -26,6 +27,14 @@ class SchoolsController < ApplicationController
 end
 
 def update
+  @school=School.find(params[:id])
+  if @school.update(school_params)
+    flash[:notice]= "¡El registro ha sido modificado exitosamente!"
+    redirect_to schools_path
+  else
+    flash[:alert] = "Error al editar el registro de la institución"
+    render :edit
+  end
 
 end
 

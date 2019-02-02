@@ -38,6 +38,14 @@
 								<%= link_to school_path(school), remote: true,class: "btn btn-info btn-sm",title:"Ver detalles" do%>
 								<i class="far fa-eye text-dark"></i>
 								<% end %>
+
+								<%= link_to edit_school_path(school), class: "btn btn-warning btn-sm", title: "Editar" do %>
+								<i class="fas fa-edit text-dark"></i>
+								<% end %>
+
+								<%= link_to  school_path(school), method: :delete, data: {confirm: "¿Está seguro de eliminar el registro de #{school.name} ?"}, class: "btn btn-danger btn-sm", title: "Eliminar" do%>
+								<i class="far fa-trash-alt text-dark"></i>
+								<% end %>
 								
 							</div>
 						</td>

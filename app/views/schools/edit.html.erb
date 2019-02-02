@@ -1,2 +1,29 @@
-<h1>Schools#edit</h1>
-<p>Find me in app/views/schools/edit.html.erb</p>
+<%= render "admin/navbar" %>
+
+<div id="wrapper">
+	<!-- Sidebar -->
+	<%= render "admin/sidebar" %>
+	<div id="content-wrapper">
+
+		<div class="container-fluid">
+
+			<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<%= "#{current_admin.email}" %>
+				</li>
+				<li class="breadcrumb-item active">Editar Institución</li>
+			</ol>
+
+			<%= render "form" %>		
+
+		</div>
+		<!-- /.container-fluid -->
+	</div>
+	<!-- /.content-wrapper -->
+</div>
+
+
+
+
+
