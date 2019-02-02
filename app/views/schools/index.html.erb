@@ -1,2 +1,22 @@
-<h1>Schools#index</h1>
-<p>Find me in app/views/schools/index.html.erb</p>
+<%= render "admin/navbar" %>
+
+<div id="wrapper">
+	<!-- Sidebar -->
+	<%= render "admin/sidebar" %>
+	<div id="content-wrapper">
+
+		<div class="container-fluid">
+
+			<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<%= "#{current_admin.email}" %>
+				</li>
+				<li class="breadcrumb-item active">Facilitadores</li>
+			</ol>
+			<%= render "schools_table" %>
+		</div>
+		<!-- /.container-fluid -->
+	</div>
+	<!-- /.content-wrapper -->
+</div>

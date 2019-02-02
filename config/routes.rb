@@ -14,9 +14,10 @@ Rails.application.routes.draw do
 	get 'admin/index'
 	# get 'admin/facilitador/:id', to: 'admin#show_facilitador', as: 'facilitador'
 	# delete "admin/facilitador/:id", to: 'admin#destroy_facilitador'
-	resources :schools
+	#resources :schools
 	scope '/admin' do
 		resources :facilitadors, only: [:index, :show, :destroy]
+		resources :schools
 	end
 
 

@@ -1,4 +1,7 @@
 class FacilitadorsController < ApplicationController
+
+	before_action :authenticate_admin!
+	
 	def index
 		#byebug
 		@facilitadores = User.all

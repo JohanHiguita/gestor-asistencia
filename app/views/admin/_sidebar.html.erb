@@ -11,18 +11,13 @@
 			<span>Facilitadores</span>
 			<% end %>
 		</li>
-		<!-- <li class="nav-item">
-			<a class="nav-link" href="/admin/index#header_table_facilitadores" title="Facilitadores">
-				<i class="fas fa-users"></i>
-				<span>Facilitadores</span>
-			</a>
-		</li> -->
 		<li class="nav-item">
-			<a class="nav-link" href="/admin/index#header_table_schools" title="Instituciones">
-				<i class="fas fa-school"></i>
-				<span>Instituciones</span>
-			</a>
+			<%= link_to schools_path, class: "nav-link",title:"Instituciones" do%>
+			<i class="fas fa-school"></i>
+			<span>Instituciones</span>
+			<% end %>
 		</li>
+		
 		<li class="nav-item">
 			<a class="nav-link" href="/admin/index#header_table_sessions" title="Sesiones">
 				<i class="fas fa-list"></i>
