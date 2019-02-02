@@ -7,9 +7,8 @@
 			<table class="table table-bordered table-striped table-sm" id="schoolsTable" width="100%" cellspacing="0">
 				<thead>
 					<tr>
-						<th>Código</th>
-						<th>Institución</th>
 						<th>Grupo</th>
+						<th>Institución</th>
 						<th>Facilitador</th>
 						<th>Sesiones</th>
 						<th>Estudiantes / Sesión</th>
@@ -18,9 +17,8 @@
 				</thead>
 				<tfoot>
 					<tr>
-						<th>Código</th>
-						<th>Institución</th>
 						<th>Grupo</th>
+						<th>Institución</th>
 						<th>Facilitador</th>
 						<th>Sesiones</th>
 						<th>Estudiantes / Sesión</th>
@@ -32,7 +30,6 @@
 					<tr>
 						<td><%=  school.code %></td>
 						<td><%=  school.name %></td>
-						<td><%=  "SEC o PRI" %></td>
 						<td><%=  school.user ? school.user.fullName : school.user %></td>
 						<td><%=  school.class_sessions.count %></td>
 						<td><%= school.students_avg %></td>		

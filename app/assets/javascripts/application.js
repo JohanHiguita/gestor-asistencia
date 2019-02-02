@@ -23,6 +23,7 @@ $(function() {
   	$(".chevron-sidebar").toggleClass("fa-chevron-right");
   });
 
+  // Show students when changes schools select
   $('.select_school_session').change(function(){
   	var school_id = $('.select_school_session option:selected').val();
     $.ajax({
@@ -32,15 +33,31 @@ $(function() {
    })
   });
 
+  
+  if($('#school-level').val() == "Primaria"){
+      $('input#school_code').val("PRI-");
+  }else{
+      $('input#school_code').val("SEC-");
+  }
+  $('#school-level').change(function(){
+    if($('#school-level').val() == "Primaria"){
+     $('input#school_code').val("PRI-");
+    }else{
+      $('input#school_code').val("SEC-");
+    }
+    $('input#school_code').focus();
+  });
+  
+
     // $(".btn-edit-session").on("click", function(){
-    
-      
+
+
     // });
 
 
- 
 
 
-});
+
+  });
 
 

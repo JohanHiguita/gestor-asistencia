@@ -12,7 +12,9 @@
 					<span><b>Grupo: </b><%= @school.code %></span><br />
 					<span><b>Comuna: </b><%= @school.comuna %></span><br />
 					<span><b>Cons. Sede: </b><%= @school.ConsSede %></span><br />
-					<span><b>Facilitador: </b><%= @school.user.fullName %></span><br />
+					<span><b>Facilitador: </b>
+						<%= @school.user ? @school.user.fullName : "No asignado" %>
+					</span><br />
 				</p>
 			
 				<p>

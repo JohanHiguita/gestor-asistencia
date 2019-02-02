@@ -3,12 +3,14 @@ Rails.application.routes.draw do
 
 	root to: "students#index"
 	get '/class_sessions/find/students_selection', to: 'class_sessions#students_selection'
-
+	#get '/admin/schools/new', to: 'admin#new_school'
 	#Admin routes:
 	get 'admin/index'
 	get 'admin/facilitador/:id', to: 'admin#show_facilitador', as: 'facilitador'
 	delete "admin/facilitador/:id", to: 'admin#destroy_facilitador'
-	get 'admin/school/:id', to: 'admin#show_school', as: 'school'
+	get 'admin/schools/new', to: 'admin#new_school', as: 'new_school'
+	post 'admin/schools', to: 'admin#create_school'
+	#get 'admin/school/:id', to: 'admin#show_school', as: 'school'
 
 	#Facilitadores routes:
 	resources :students	
