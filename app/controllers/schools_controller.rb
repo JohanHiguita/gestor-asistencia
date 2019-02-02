@@ -1,4 +1,7 @@
 class SchoolsController < ApplicationController
+
+  before_action :authenticate_admin!
+
   def index
   end
 
@@ -39,7 +42,12 @@ def update
 end
 
 def destroy
+  school = School.find(params[:id])
+  school.destroy
+  flash[:notice]="Se ha eliminado el registro de la institución"
+  redirect_to students_path
 end
+
 
 private
 

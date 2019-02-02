@@ -31,11 +31,14 @@
 
 						<td>
 							<div class="btn-group btn-group-sm" role="group">
-								<%= link_to facilitador_path(facilitador), remote: true,class: "btn btn-info btn-sm",title:"Ver detalles" do%>
+
+	
+
+								<%= link_to facilitador_path(facilitador), remote: true, class: "btn btn-info btn-sm", title: "Ver detalles" do %>
 								<i class="far fa-eye text-dark"></i>
 								<% end %>
 
-								<%= link_to  facilitador_path(facilitador), method: :delete, data: {confirm: "¿Está seguro de eliminar el registro del estudiante ?"}, class: "btn btn-danger btn-sm", title: "Eliminar" do%>
+								<%= link_to  facilitador_path(facilitador), method: :delete, data: {confirm: "¿Está seguro de eliminar el registro del Facilitador #{facilitador.fullName}?"}, class: "btn btn-danger btn-sm", title: "Eliminar" do%>
 								<i class="far fa-trash-alt text-dark"></i>
 
 								<% end %>

@@ -1,8 +1,8 @@
-<%= render "navbar" %>
+<%= render "admin/navbar" %>
 
 <div id="wrapper">
 	<!-- Sidebar -->
-	<%= render "sidebar" %>
+	<%= render "admin/sidebar" %>
 	<div id="content-wrapper">
 
 		<div class="container-fluid">
@@ -12,19 +12,15 @@
 				<li class="breadcrumb-item">
 					<%= "#{current_admin.email}" %>
 				</li>
-				<li class="breadcrumb-item active">Inicio</li>
+				<li class="breadcrumb-item active">Facilitadores</li>
 			</ol>
 			<%= render "facilitadores_table" %>
-			<br /><br />
-			<%= render "schools_table" %>
-			<br /><br />
-			<%= render "sessions_table" %>
-
 		</div>
 		<!-- /.container-fluid -->
 	</div>
 	<!-- /.content-wrapper -->
 </div>
+
 
 
 
