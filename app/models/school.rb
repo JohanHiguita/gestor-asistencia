@@ -6,7 +6,7 @@ class School < ApplicationRecord
 
 
 	#set Role
-	enum role: [:pri, :sec]
+	enum level: [:pri, :sec]
 	
 	def getName
 		self.name
