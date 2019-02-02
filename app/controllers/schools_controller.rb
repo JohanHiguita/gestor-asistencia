@@ -7,27 +7,35 @@ class SchoolsController < ApplicationController
   end
 
   def new
-     @school=School.new
+   @school=School.new
+ end
+
+ def edit
+ end
+
+ def create
+  byebug
+  @school = School.new(school_params)
+  
+  if @school.save!
+    flash[:notice]= "¡La instutución se ha guardado exitosamente!"
+  else
+    flash[:alert] = "Error al crear la institución"
   end
+  redirect_to new_school_path
+end
 
-  def edit
-  end
+def update
 
-  def create
+end
 
-  end
+def destroy
+end
 
-  def update
+private
 
-  end
-
-  def destroy
-  end
-
-  private
-
-  def school_params
-  params.require(:school).permit(:name, :user_id, :code,:ConsSede, :comuna) #solo permite estos datos
+def school_params
+  params.require(:school).permit(:name, :user_id, :code,:ConsSede, :comuna, :level) #solo permite estos datos
 
 end
 end
