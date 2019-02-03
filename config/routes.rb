@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # get 'admin_class_sessions/index'
   # get 'admin_class_sessions/show'
-	#root to: "students#index"
+	root to: "students#index"
 	get '/class_sessions/find/students_selection', to: 'class_sessions#students_selection'
 
 
