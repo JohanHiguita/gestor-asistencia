@@ -1,23 +1,18 @@
 Rails.application.routes.draw do
 
 
-
-	# get 'facilitadores/index'
-	# get 'facilitadores/show'
-	# get 'facilitadores/destroy'
-
-	root to: "students#index"
+  # get 'admin_class_sessions/index'
+  # get 'admin_class_sessions/show'
+	#root to: "students#index"
 	get '/class_sessions/find/students_selection', to: 'class_sessions#students_selection'
 
 
 	#--Role Admin routes:
 	get 'admin/index'
-	# get 'admin/facilitador/:id', to: 'admin#show_facilitador', as: 'facilitador'
-	# delete "admin/facilitador/:id", to: 'admin#destroy_facilitador'
-	#resources :schools
 	scope '/admin' do
 		resources :facilitadors, only: [:index, :show, :destroy]
 		resources :schools
+		resources :admin_class_sessions, only: [:index, :show]
 	end
 
 

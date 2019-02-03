@@ -17,13 +17,19 @@
 			<span>Instituciones</span>
 			<% end %>
 		</li>
-		
 		<li class="nav-item">
+			<%= link_to  admin_class_sessions_path, class: "nav-link",title:"Instituciones" do%>
+			<i class="fas fa-clipboard-list"></i>
+			<span>Sesiones</span>
+			<% end %>
+		</li>
+		
+		<!-- <li class="nav-item">
 			<a class="nav-link" href="/admin/index#header_table_sessions" title="Sesiones">
 				<i class="fas fa-list"></i>
 				<span>Sesiones</span>
 			</a>
-		</li>
+		</li> -->
 		<li class="nav-item">
 			<%= link_to new_school_path, class: "nav-link",title:"Agregar institución	" do%>
 			<i class="fas fa-plus-circle"></i>
