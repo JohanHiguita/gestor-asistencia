@@ -19,6 +19,10 @@ Rails.application.routes.draw do
 	#--Role Facilitadores routes:
 	resources :students	
 	resources :class_sessions
+	#---- Generate Attendance
+	#resources :attendances, only: [:show_modal]
+	get '/attendances', to: 'attendances#show_modal'
+	post '/attendances', to: 'attendances#download_xls'
 
 
 	#--Devise routes:
