@@ -35,6 +35,7 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 gem 'devise'
 gem 'faker', '~> 1.6', '>= 1.6.6'
+gem 'spreadsheet', '~> 1.1', '>= 1.1.9'
 
 
 # Reduces boot times through caching; required in config/boot.rb
