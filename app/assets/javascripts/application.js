@@ -13,6 +13,10 @@
 //= require sbadmin/datatables-demo
 $(function() {
 
+  //Alertas:
+  $(".alert").fadeIn(500).css("opacity", "0.85").delay(4000).slideUp(1000);
+  $(".alerts").on('click','.alert', function(){$(this.remove())});
+
 
   // toggle behavior of sidebar
   $("#sidebarToggle, .btn-sidebar").on("click", function () {

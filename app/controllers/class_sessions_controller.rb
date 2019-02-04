@@ -29,9 +29,9 @@ class ClassSessionsController < ApplicationController
     @session.time = time
 
     if @session.save!
-      flash[:notice]= "¡El estudiante se ha almacenado exitosamente!"
+      flash[:notice]= "¡La sesión se ha almacenado exitosamente!"
     else
-      flash[:alert] = "Error al crear el estudiante"
+      flash[:alert] = "Error al crear la sesión"
     end
     redirect_to new_class_session_path
   end
@@ -63,7 +63,7 @@ class ClassSessionsController < ApplicationController
     flash[:notice]= "¡El registro ha sido modificado exitosamente!"
     redirect_to class_sessions_path
   else
-    flash[:alert] = "Error al editar el registro del estudiante"
+    flash[:alert] = "Error al editar el registro de la sesión"
     render :edit
   end
 
@@ -74,6 +74,10 @@ def show
 end
 
 def destroy
+    session = ClassSession.find(params[:id])
+    session.destroy
+    flash[:alert]="Se ha eliminado la sesión"
+    redirect_to class_sessions_path
 end
 
 def students_selection

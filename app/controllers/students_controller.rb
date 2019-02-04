@@ -44,7 +44,7 @@ class StudentsController < ApplicationController
     student = Student.find(params[:id])
     student_name = student.fullName
     student.destroy
-    flash[:notice]="El se ha eliminado el estudiante #{student_name}"
+    flash[:alert]="Se ha eliminado el estudiante #{student_name}"
     redirect_to students_path
   end
 
