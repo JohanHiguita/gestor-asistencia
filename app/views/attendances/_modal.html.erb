@@ -10,22 +10,42 @@
 			<div class="modal-body">
 				<%#= @schools.first.name %>
 				
-				<%= form_tag controller: "attendances", action: "download_xls", method: "post", class: "nifty_form" do %>
+				<%= form_tag controller: "attendances", action: "download_xls", method: "post", class: "nifty_form form-download" do %>
 
 				<div class="form-row">
-					<div class="form-group col-md-8">
-						<label for="school"><b>Institución</b></label>
-						<%= select_tag "school", options_from_collection_for_select(@schools, :id, :name), {:class => 'custom-select'} %>
-					</div>
-					<div class="form-group col-md-4">
+					<div class="form-group col-md-6">
 						<label for="week"><b>Semana</b></label>
 						<input class="form-control" type="number" id="week" name="week"
 						min="1" max="54" required>
 					</div>
+					<div class="form-group col-md-6">
+						<label for="month"><b>Mes</b></label>
+						<select id="month" name="month" class="form-control">
+							<option value="Enero">Enero</option>
+							<option value="Febrero">Febrero</option>
+							<option value="Marzo">Marzo</option>
+							<option value="Abril">Abril</option>
+							<option value="Mayo">Mayo</option>
+							<option value="Junio">Junio</option>
+							<option value="Julio">Julio</option>
+							<option value="Agosto">Agosto</option>
+							<option value="Septiembre">Septiembre</option>
+							<option value="Octubre">Octubre</option>
+							<option value="Noviembre">Noviembre</option>
+							<option value="Diciembre">Diciembre</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<label for="school"><b>Institución</b></label>
+						<%= select_tag "school", options_from_collection_for_select(@schools, :id, :name), {:class => 'custom-select'} %>
+					</div>
+					
 				</div>
 
 				<div class="formgroup text-center">
-					<%= button_tag :submit, class: "btn btn-success", 'data-disable-with' => "Descargando..." do %>
+					<%= button_tag :submit, class: "btn btn-success btn-download", 'data-disable-with' => "Descargando..." do %>
 					<i class="fas fa-file-download"></i> Descargar Excel
 				</div>
 				<% end %>

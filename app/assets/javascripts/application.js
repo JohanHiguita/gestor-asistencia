@@ -36,30 +36,35 @@ $(function() {
   
   // Suggest value to code of school depends on level
   if($('#school_level').val() == "pri"){
-      $('input#school_code').val("PRI-");
+    $('input#school_code').val("PRI-");
   }else{
-      $('input#school_code').val("SEC-");
+    $('input#school_code').val("SEC-");
   }
 
   $('#school_level').change(function(){
     if($('#school_level').val() == "pri"){
      $('input#school_code').val("PRI-");
-    }else{
-      $('input#school_code').val("SEC-");
-    }
-    $('input#school_code').focus();
+   }else{
+    $('input#school_code').val("SEC-");
+  }
+  $('input#school_code').focus();
   });
+
+  // $(".btn-download").on("click", function()  {
+  //   $("#generate-assistance-modal").modal('hide');
+  //   alert("Oe");
+
+  // });
+
+  // $( ".form-download" ).submit(function( event ) {
+  //   $("#generate-assistance-modal").modal('hide');
+  //   alert( "Handler for .submit() called." );
+  //   event.preventDefault();
+  // });
+
   
 
-    // $(".btn-edit-session").on("click", function(){
 
-
-    // });
-
-
-
-
-
-  });
+});
 
 

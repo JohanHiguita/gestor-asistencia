@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_02_002513) do
+ActiveRecord::Schema.define(version: 2019_02_04_000032) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_02_02_002513) do
     t.integer "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "week"
     t.index ["school_id"], name: "index_class_sessions_on_school_id"
     t.index ["student_id"], name: "index_class_sessions_on_student_id"
     t.index ["user_id"], name: "index_class_sessions_on_user_id"
