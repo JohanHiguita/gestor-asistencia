@@ -10,11 +10,12 @@ class AttendancesController < ApplicationController
 	def download_xls
 		school_id = params[:school]
 		week = params[:week]
+		school_code = School.find(school_id).code
 		generate_excel school_id, week
 		#render js: "$('#generate-assistance-modal').modal('hide');"
 		send_file(
 			"#{Rails.root}/public/asistencia.xls",
-			filename: "Asistencia_Digital.xls",
+			filename: "ASISTENCIA DIGITAL SEM#{week} #{school_code}.xls",
 			type: "application/xls"
 			)
 	end
@@ -48,10 +49,19 @@ class AttendancesController < ApplicationController
 			"OBSERVACIONES"		
 		]
 
+		#Formatting
+		# format = Spreadsheet::Format.new :color => :blue,
+		# :weight => :bold,
+		# :size => 18
+		# sheet1.row(0).default_format = format
+
 		#Necessary arrays:
 		sessions = ClassSession.where(week: week).where(school_id: school_id)
 		students = School.find(school_id).students
-
+		ids = [] #students ids in sessions of the week (repeated)
+		sessions.each do |session|
+			ids += session.student_ids
+		end
 		#Commun values:
 		school = School.find(school_id)
 		cons_sede = school.ConsSede
@@ -65,7 +75,7 @@ class AttendancesController < ApplicationController
 		sesiones_ejecutadas = sessions.count
 		semana_informe = week
 
-				
+
 		#Fill excel in
 		students.each_with_index { |student, index|
 			row = [
@@ -86,8 +96,8 @@ class AttendancesController < ApplicationController
 				semana_informe,
 				sesiones_proyectadas,
 				sesiones_ejecutadas,
-				"x",
-				"y",
+				ids.count(student.id),
+				"#{( (ids.count(student.id).to_f/sesiones_ejecutadas)*100 ).to_i}%",
 				student.observations
 			]
 			sheet1.row(index + 1).replace row
