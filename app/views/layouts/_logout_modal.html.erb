@@ -10,7 +10,11 @@
 			<div class="modal-body">¿Confirma que desea salir?</div>
 			<div class="modal-footer">
 				<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+				<% if user_signed_in? %>
 				<%= link_to "Salir", destroy_user_session_path, method: :delete, class: "btn btn-primary", title: "Salir"%>
+				<% elsif admin_signed_in? %> 
+				<%= link_to "Salir", destroy_admin_session_path, method: :delete, class: "btn btn-primary", title: "Salir"%>
+				<% end %>
 			</div>
 		</div>
 	</div>
