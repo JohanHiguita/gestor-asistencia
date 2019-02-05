@@ -19,7 +19,7 @@ class FacilitadorsController < ApplicationController
 		facilitador = User.find(params[:id])
     	#student_name = student.fullName
     	facilitador.destroy
-    	flash[:notice]="Se ha eliminado el registro del facilitador"
+    	flash[:alert]="Se ha eliminado el registro del facilitador"
     	redirect_to facilitadors_path
     end
 end

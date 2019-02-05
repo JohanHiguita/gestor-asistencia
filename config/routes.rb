@@ -26,8 +26,9 @@ Rails.application.routes.draw do
 
 
 	#--Devise routes:
-	devise_for :users, path: 'facilitadores', controllers: { sessions: "users/sessions"}
 	devise_for :admin, path: 'admin', controllers: { sessions: "admin/sessions"}
+	devise_for :users, path: 'facilitadores', controllers: { sessions: "users/sessions"}
+	
 
 
 end

@@ -45,7 +45,7 @@ end
 def destroy
   school = School.find(params[:id])
   school.destroy
-  flash[:notice]="Se ha eliminado el registro de la institución"
+  flash[:alert]="Se ha eliminado el registro de la institución"
   redirect_to schools_path
 end
 
