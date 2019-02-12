@@ -13,7 +13,7 @@ require 'faker'
 User.destroy_all
 School.destroy_all
 Student.destroy_all
-Class_Session.destroy_all
+ClassSession.destroy_all
 
 
 #cantidad de datos por tabla
@@ -31,17 +31,12 @@ num_sessions = (num_schools)*10 # 10 sessions per School
 # ActiveRecord::Base.connection.execute("ALTER SEQUENCE students_id_seq RESTART WITH #{num_students + 1}")
 # ActiveRecord::Base.connection.execute("ALTER SEQUENCE sessions_id_seq RESTART WITH #{num_sessions  + 1}")
 
-
-# #User1:
-# user = User.new
-# user.id = 1
-# user.email = 'demouser@gmail.com'
-# user.first_name = 'Demo'
-# user.last_name_1 = 'user'
-# user.password = 'demouser123'
-# user.password_confirmation = 'demouser123'
-# user.cc = 12344321
-# user.save!
+#Admin
+admin = Admin.new
+admin.email = "demo-admin@gmail.com"
+admin.password = 'demo123'
+admin.password_confirmation = 'demo123'
+admin.save!
 
 #Users:
 _rdm_genre = Random.new
@@ -54,8 +49,8 @@ num_users.times do |i|
 
 
 	user = User.new
-	user.password = 'demouser123'
-	user.password_confirmation = 'demouser123'
+	user.password = 'demo123'
+	user.password_confirmation = 'demo123'
 	user.cc = Faker::Number.number(10)
 
 	if rdm_genre == 0 && rdm_last_name2 == 0 && rdm_middle_name == 0
@@ -93,9 +88,9 @@ num_users.times do |i|
 
 	#user 1 (Overwrite data)
 	if i==0
-		user.email = 'demouser@pygmalion.tech'
+		user.email = 'demo-user@gmail.com'
 		user.first_name = 'Demo'
-		user.last_name_1 = 'user'
+		user.last_name_1 = 'facilitador'
 		user.middle_name = nil
 		user.last_name_2 = nil
 	else
@@ -113,7 +108,6 @@ user_id = 1
 num_schools.times do |i|
 	school= School.new(
 		id: i+1,
-		code: "SEC-#{i+1}",
 		ConsSede: Faker::Number.number(13),
 		comuna: Faker::Number.between(1, 16),
 		user_id: user_id
@@ -121,8 +115,12 @@ num_schools.times do |i|
 	# Avoid no data (because of unique value)
 	if i.odd?
 		school.name = Faker::Educator.unique.secondary_school
+		school.code = "SEC-#{i+1}"
+		school.level = "sec"
 	else
 		school.name = Faker::University.unique.name
+		school.code = "PRI-#{i+1}"
+		school.level = "pri"
 	end
 
 	#each user has 3 schools
@@ -204,7 +202,7 @@ num_students.times do |i|
 end
 
 #Sessions:
-year=2018
+year=2019
 min=0
 _rdm_month = Random.new
 _rdm_day = Random.new
@@ -214,10 +212,10 @@ _rdm_hour = Random.new
 school_id = 1
 session_number = 1
 num_sessions.times do |i|
-	rdm_month = _rdm_month.rand(10..11) # Oct - Nov
+	rdm_month = _rdm_month.rand(1..3) # ene - mar
 	rdm_day = _rdm_day.rand(1..30)
 	rdm_hour = _rdm_hour.rand(12..17) # 12pm - 5pm
-	session = Class_Session.new
+	session = ClassSession.new
 	session.school_id = school_id
 	school = School.find(school_id)
 	session.user_id = school.user_id # same user
@@ -234,8 +232,6 @@ num_sessions.times do |i|
 	
 	session.save
 
-	
-	
 end
 
 

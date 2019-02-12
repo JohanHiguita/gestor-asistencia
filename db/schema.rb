@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(version: 2019_02_04_000032) do
     t.string "last_name_1"
     t.string "last_name_2"
     t.string "cc"
-    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
